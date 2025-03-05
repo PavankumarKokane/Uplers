@@ -1,0 +1,3 @@
+# Ignore Shopify environment files
+config.yml
+.theme-check.yml
