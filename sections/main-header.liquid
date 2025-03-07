@@ -1,0 +1,56 @@
+<div class="bg-white shadow-sm">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="flex justify-between h-16">
+      <div class="flex items-center">
+        <a class="w-48 py-3 block" href="/" data-discover="true">
+          <h1 class="text-xl font-semibold">{{ shop.name }}</h1>
+        </a>
+      </div>
+      <div class="flex items-center">
+        <div class="flex-shrink-0">
+          <div class="relative p-2 text-gray-400 hover:text-gray-500 cart-icon">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              class="lucide lucide-shopping-cart h-6 w-6"
+            >
+              <circle cx="8" cy="21" r="1"></circle>
+              <circle cx="19" cy="21" r="1"></circle>
+              <path
+                  d="M2.05 2.05h2l2.66 12.42a2 2 0 0 0 2 1.58h9.78a2 2 0 0 0 1.95-1.57l1.65-7.43H5.12">
+              </path>
+            </svg>
+            <span class="absolute top-2 right--5 inline-flex items-center justify-center px-2 py-1 text-xs font-bold leading-none text-white transform translate-x-1/2 -translate-y-1/2 bg-indigo-600 rounded-full cart-count">0</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Main Header",
+  "tag": "header",
+  "class": "header",
+  "settings": [],
+  "blocks": [],
+  "presets": [
+    {
+      "name": "Main Header"
+    }
+  ]
+}
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

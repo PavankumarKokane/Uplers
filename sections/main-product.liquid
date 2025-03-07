@@ -1,0 +1,373 @@
+<div class="main-product">
+  <nav>
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex justify-between h-16 items-center">
+        <div class="flex items-center flex-wrap gap-4">
+          <a href="/collections/all" class="text-sm text-gray-600">All</a>
+          <span class="text-gray-300">/</span>
+          {% if product %}
+            {% for collection in product.collections %}
+              <a href="{{ collection.url }}" class="text-sm text-gray-600">{{ collection.title }}</a>
+              {% if forloop.last == false %}
+                <span class="text-gray-300">/</span>
+              {% endif %}
+            {% endfor %}
+            <span class="text-gray-300">/</span>
+            <a href="{{ product.url }}" class="font-medium text-sm text-gray-600">{{ product.title }}</a>
+          {% endif %}
+        </div>
+      </div>
+    </div>
+  </nav>
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 pb-24">
+      <div class="flex flex-col gap-4">
+        <div class="aspect-square bg-gray-100 rounded-lg overflow-hidden">
+          {% for images in product.images limit: 1 %}
+            <img
+              loading="eager"
+              id="mainImage"
+              src="{{ images.src | img_url: 'master' }}"
+              alt="{{ product.title | append: forloop.index }}"
+              width="680"
+              height="680"
+              class="w-full h-full object-cover"
+            >
+          {% endfor %}
+        </div>
+
+        <div class="grid grid-cols-4 gap-4">
+          {% for images in product.images %}
+            <div class="thumbnail-btn aspect-square bg-gray-100 rounded-lg overflow-hidden {%- if forloop.index == 1 -%}{{ " ring-2 ring-indigo-600" }}{%- endif -%}">
+              <img
+                loading="lazy"
+                src="{{ images.src | img_url: 'master' }}"
+                alt="{{ product.title | append: forloop.index }}"
+                width="680"
+                height="680"
+                class="w-full h-full object-cover"
+              >
+            </div>
+          {% endfor %}
+        </div>
+      </div>
+      <div class="flex flex-col gap-6">
+        <h1 class="text-3xl font-bold">{{ product.title }}</h1>
+        <div class="flex items-center gap-1">
+          <div class="flex">
+            <svg class="w-5 h-5 text-indigo-500" fill="currentColor" viewBox="0 0 20 20">
+              <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
+            </svg>
+            <svg class="w-5 h-5 text-indigo-500" fill="currentColor" viewBox="0 0 20 20">
+              <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
+            </svg>
+            <svg class="w-5 h-5 text-indigo-500" fill="currentColor" viewBox="0 0 20 20">
+              <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
+            </svg>
+            <svg class="w-5 h-5 text-indigo-500" fill="currentColor" viewBox="0 0 20 20">
+              <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
+            </svg>
+            <svg class="w-5 h-5 text-gray-300" fill="currentColor" viewBox="0 0 20 20">
+              <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
+            </svg>
+          </div>
+        </div>
+        <p class="text-2xl font-bold price">{{ product.first_available_variant.price | money_with_currency }}</p>
+        <div class="text-gray-600">{{ product.description }}</div>
+        {%- for option in product.options_with_values -%}
+          {%- if option.name == 'Color' -%}
+            <div class="flex flex-col gap-4">
+              <p class="font-medium">{{ option.name }}</p>
+              <div class="flex flex-wrap gap-3">
+                {%- for value in option.values -%}
+                  {%- assign current_position = option.position | minus: 1 -%}
+                  {%- assign current_option = product.first_available_variant.options[current_position] -%}
+                  <button
+                    style="background:{{ value }}"
+                    class="
+                      color-btn w-8 h-8 rounded-full bg-gray-200 ring-2 ring-offset-2
+                      {%- if current_option == value -%}
+                        {{ " ring-indigo-600 active" }}
+                      {%- else -%}
+                       {{ " ring-gray-200" }}
+                      {%- endif -%}
+                    "
+                    data-color="{{ value }}"
+                  ></button>
+                {%- endfor -%}
+              </div>
+            </div>
+          {%- else -%}
+            <div class="flex flex-col gap-4">
+              <div class="flex justify-between items-center">
+                <p class="font-medium">{{ option.name }}</p>
+                <button class="text-sm text-indigo-600 hover:text-indigo-500">See sizing chart</button>
+              </div>
+              <div class="grid grid-cols-6 gap-2">
+                {%- for value in option.values -%}
+                  {%- assign current_position = option.position | minus: 1 -%}
+                  {%- assign current_option = product.first_available_variant.options[current_position] -%}
+                  <button
+                    class="
+                      size-btn px-4 py-2 text-sm border rounded-md
+                      {%- if current_option == value -%}
+                          {{ " border-indigo-600 active" }}
+                        {%- else -%}
+                         {{ " border-gray-200" }}
+                        {%- endif -%}
+                    "
+                    data-size="{{ value }}"
+                  >
+                    {{ value }}
+                  </button>
+                {%- endfor -%}
+              </div>
+            </div>
+          {%- endif -%}
+        {%- endfor -%}
+
+        <div class="flex items-center justify-between">
+          {%- if product.metafields.custom.gift_wrap.value -%}
+            <label class="flex items-center gap-2">
+              <input
+                type="checkbox"
+                value="{{ product.metafields.custom.gift_wrap.value.variants[0].id }}"
+                class="rounded border-gray-300 text-indigo-600 focus:ring-indigo-500 gift-wrap"
+              >
+              <span class="text-sm text-gray-700"
+                >Wrap as a gift (
+                {%- if product.metafields.custom.gift_wrap.value.price > 0 -%}
+                  {{ '+ ' | append: product.metafields.custom.gift_wrap.value.price | money_with_currency }}
+                {%- else -%}
+                  {{ 'Free' }}
+                {%- endif -%}
+                )</span
+              >
+            </label>
+          {%- endif -%}
+          <span class="text-sm text-amber-500 qty-current"
+            >Only {{ product.first_available_variant.inventory_quantity }} left!</span
+          >
+        </div>
+
+        <form class="w-full max-w-xl" id="pdp-form">
+          <div class="hidden gift-wrap-form">
+            <div class="mt-4">
+              <label for="to" class="block text-sm/6 font-semibold text-gray-900 after:content-['*'] after:text-red-500"
+                >To</label
+              >
+              <div class="mt-2.5">
+                <input
+                  type="text"
+                  name="to"
+                  id="to"
+                  autocomplete="given-name"
+                  class="block w-full rounded-md border bg-white px-3.5 py-2 text-base text-gray-900 outline-1 -outline-offset-1 outline-gray-900 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600"
+                >
+              </div>
+            </div>
+            <div class="mt-4">
+              <label
+                for="form"
+                class="block text-sm/6 font-semibold text-gray-900 after:content-['*'] after:text-red-500"
+                >From</label
+              >
+              <div class="mt-2.5">
+                <input
+                  type="text"
+                  name="form"
+                  id="form"
+                  autocomplete="family-name"
+                  class="block w-full rounded-md border bg-white px-3.5 py-2 text-base text-gray-900 outline-1 -outline-offset-1 outline-gray-900 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600"
+                >
+              </div>
+            </div>
+            <div class="mt-4">
+              <label
+                for="message"
+                class="block text-sm/6 font-semibold text-gray-900 after:content-['*'] after:text-red-500"
+                >Gift message</label
+              >
+              <div class="mt-2.5">
+                <textarea
+                  type="text"
+                  name="message"
+                  id="message"
+                  autocomplete="family-name"
+                  rows="5"
+                  class="block w-full rounded-md border bg-white px-3.5 py-2 text-base text-gray-900 outline-1 -outline-offset-1 outline-gray-900 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600"
+                ></textarea>
+              </div>
+            </div>
+          </div>
+          <div class="flex flex-wrap gap-4 mt-4">
+            <button
+              type="submit"
+              class="flex-1 bg-indigo-600 text-white py-3 px-6 rounded-lg hover:bg-indigo-700 disabled:opacity-25 add-to-cart"
+              data-variation="{{ product.first_available_variant.id }}"
+            >
+              Add To Cart →
+            </button>
+            <button class="p-3 rounded-lg border border-gray-200 hover:bg-gray-50">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z">
+                </path>
+              </svg>
+            </button>
+          </div>
+        </form>
+        <div class="mt-4">
+          <div class="border-t border-gray-200">
+            <button class="accordion-btn flex justify-between items-center w-full py-4">
+              <span class="font-medium">Features</span>
+              <span class="text-2xl transition-transform">+</span>
+            </button>
+            <div class="accordion-content hidden pb-4">
+              <ul class="list-disc pl-5 text-gray-600">
+                <li>Multiple carry positions</li>
+                <li>Water-resistant canvas</li>
+                <li>Leather trim and handles</li>
+                <li>Interior zip pocket</li>
+              </ul>
+            </div>
+          </div>
+          <div class="border-t border-gray-200">
+            <button class="accordion-btn flex justify-between items-center w-full py-4">
+              <span class="font-medium">Care</span>
+              <span class="text-2xl transition-transform">+</span>
+            </button>
+            <div class="accordion-content hidden pb-4">
+              <p class="text-gray-600">Spot clean with mild detergent. Air dry only.</p>
+            </div>
+          </div>
+          <div class="border-t border-gray-200">
+            <button class="accordion-btn flex justify-between items-center w-full py-4">
+              <span class="font-medium">Shipping</span>
+              <span class="text-2xl transition-transform">+</span>
+            </button>
+            <div class="accordion-content hidden pb-4">
+              <p class="text-gray-600">Free shipping on orders over $100.</p>
+            </div>
+          </div>
+          <div class="border-t border-gray-200">
+            <button class="accordion-btn flex justify-between items-center w-full py-4">
+              <span class="font-medium">Returns</span>
+              <span class="text-2xl transition-transform">+</span>
+            </button>
+            <div class="accordion-content hidden pb-4">
+              <p class="text-gray-600">30-day return policy. See details.</p>
+            </div>
+          </div>
+        </div>
+        <div class="mt-4">
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mt-8">
+            <div class="bg-gray-100 border p-6 rounded-lg text-center">
+              <div class="flex justify-center mb-3">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  class="h-6 w-6"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                >
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                </svg>
+              </div>
+              <h3 class="font-semibold text-gray-900">International delivery</h3>
+              <p class="text-sm text-gray-500 mt-1">Get your order in 2 years</p>
+            </div>
+            <div class="bg-gray-100 border p-6 rounded-lg text-center">
+              <div class="flex justify-center mb-3">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  class="h-6 w-6"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                >
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                </svg>
+              </div>
+              <h3 class="font-semibold text-gray-900">Loyalty rewards</h3>
+              <p class="text-sm text-gray-500 mt-1">Don't look at other fees</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<script>
+    var current_product = [];
+    var variantQuantity = [];
+    {%- for variant in product.variants -%}
+      var item = {
+        "id": "{{ variant.id }}",
+        "quantity": "{{ variant.inventory_quantity }}",
+      }
+      variantQuantity.push(item);
+    {%- endfor -%}
+    const productVariants = {{ product.variants | json }};
+    var current_variation = {{ product.first_available_variant.id }};
+    function after_load(){
+      $(".color-btn,.size-btn").on("click", function(e) {
+        e.stopPropagation();
+
+        let current_color = $(".color-btn.active").attr("data-color");
+        let current_size = $(".size-btn.active").attr("data-size");
+
+
+        current_product = [];
+        current_product.push(current_color);
+        current_product.push(current_size);
+
+        
+        let radioMatchingVariant = null;
+        $.each(productVariants, function(index, variant) {
+          const matches = current_product.every(function(option, idx) {
+            return variant.options[idx] === option;
+          });
+          if (matches) {
+            radioMatchingVariant = variant;
+          }
+        });
+        const current_qty = variantQuantity.find((item)=>{
+          return item.id == radioMatchingVariant.id
+        })
+        //console.log(radioMatchingVariant,current_qty);
+        $(".add-to-cart").attr("data-variation",radioMatchingVariant.id);
+        $(".price").text(`Rs.${(radioMatchingVariant.price/100).toFixed(2)}`);
+        $(".qty-current").text(`Only ${current_qty.quantity} left!`);
+        $("#mainImage").attr("src",radioMatchingVariant.featured_image.src);
+      });
+
+      $(document).on("submit","#pdp-form",function(e){
+        e.preventDefault();
+        let variation_id = $(".add-to-cart").attr("data-variation");
+        let gift_wrap = $(".gift-wrap").is(":checked") ? $(".gift-wrap").val() : null;
+        add_to_cart(variation_id, 1, "add_to_cart");
+        if(gift_wrap){
+          const name = $("input[name='to']").val();
+          const from = $("input[name='form']").val();
+          const message = $("textarea[name='message']").val();
+          console.log(name,from,message);
+          add_to_cart(gift_wrap, 1, "add_to_cart");
+          const note = `send to ${name} from ${from} & the message is ${message}`;
+          add_note(note);
+        }
+      });
+    }
+    window.addEventListener('load', (event) => {
+      after_load();
+    });
+</script>

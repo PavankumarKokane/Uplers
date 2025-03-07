@@ -1,3 +1,7 @@
 # Ignore Shopify environment files
 config.yml
 .theme-check.yml
+node_modules
+.ruby-version
+.shopify
+input.css

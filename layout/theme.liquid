@@ -7,6 +7,9 @@
     <meta name="theme-color" content="">
     <link rel="canonical" href="{{ canonical_url }}">
     <link rel="preconnect" href="https://cdn.shopify.com" crossorigin>
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
+    <link rel="stylesheet" href="{{ 'custom.css' | asset_url }}">
+    {{ 'application.css' | asset_url | stylesheet_tag }}
     <title>
       {{ page_title }}
       {%- if current_tags %} &ndash; tagged "{{ current_tags | join: ', ' }}"{% endif -%}
@@ -18,13 +21,23 @@
     {% endif %}
 
     {% render 'meta-tags' %}
-    
+
+
     {{ content_for_header }}
   </head>
 
   <body>
+    {%- section 'main-header' -%}
     <main role="main" tabindex="-1">
       {{ content_for_layout }}
     </main>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"
+      integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script>
+    <script src="{{ 'all.js' | asset_url }}" async></script>
+    <script src="{{ 'custom-cart.js' | asset_url }}" async></script>
   </body>
 </html>
