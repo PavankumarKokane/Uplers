@@ -6,5 +6,25 @@
     "theme_author": "Pavankumar Kokane",
     "theme_documentation_url": "https://help.shopify.com/manual/online-store/themes",
     "theme_support_url": "https://support.shopify.com/"
+  },
+  {
+    "name": "Gift Wrap",
+    "settings": [
+      {
+        "type": "text",
+        "id": "to_limit",
+        "label": "To character limit",
+      },
+      {
+        "type": "text",
+        "id": "from_limit",
+        "label": "From character limit",
+      },
+      {
+        "type": "text",
+        "id": "message_limit",
+        "label": "Message character limit",
+      }
+    ]
   }
 ]

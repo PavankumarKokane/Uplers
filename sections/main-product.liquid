@@ -137,7 +137,7 @@
               <span class="text-sm text-gray-700"
                 >Wrap as a gift (
                 {%- if product.metafields.custom.gift_wrap.value.price > 0 -%}
-                  {{ '+ ' | append: product.metafields.custom.gift_wrap.value.price | money_with_currency }}
+                  {{ product.metafields.custom.gift_wrap.value.price | money_with_currency }}
                 {%- else -%}
                   {{ 'Free' }}
                 {%- endif -%}
@@ -161,7 +161,7 @@
                   type="text"
                   name="to"
                   id="to"
-                  autocomplete="given-name"
+                  maxlength="{{ settings.to_limit }}"
                   class="block w-full rounded-md border bg-white px-3.5 py-2 text-base text-gray-900 outline-1 -outline-offset-1 outline-gray-900 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600"
                 >
               </div>
@@ -177,7 +177,7 @@
                   type="text"
                   name="form"
                   id="form"
-                  autocomplete="family-name"
+                  maxlength="{{ settings.from_limit }}"
                   class="block w-full rounded-md border bg-white px-3.5 py-2 text-base text-gray-900 outline-1 -outline-offset-1 outline-gray-900 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600"
                 >
               </div>
@@ -193,7 +193,7 @@
                   type="text"
                   name="message"
                   id="message"
-                  autocomplete="family-name"
+                  maxlength="{{ settings.message_limit }}"
                   rows="5"
                   class="block w-full rounded-md border bg-white px-3.5 py-2 text-base text-gray-900 outline-1 -outline-offset-1 outline-gray-900 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600"
                 ></textarea>
@@ -351,19 +351,22 @@
         $("#mainImage").attr("src",radioMatchingVariant.featured_image.src);
       });
 
-      $(document).on("submit","#pdp-form",function(e){
+      $(document).on("submit","#pdp-form",async function(e){
         e.preventDefault();
         let variation_id = $(".add-to-cart").attr("data-variation");
         let gift_wrap = $(".gift-wrap").is(":checked") ? $(".gift-wrap").val() : null;
-        add_to_cart(variation_id, 1, "add_to_cart");
+        await add_to_cart(variation_id, 1, "add_to_cart");
         if(gift_wrap){
           const name = $("input[name='to']").val();
           const from = $("input[name='form']").val();
           const message = $("textarea[name='message']").val();
           console.log(name,from,message);
-          add_to_cart(gift_wrap, 1, "add_to_cart");
-          const note = `send to ${name} from ${from} & the message is ${message}`;
+          await new Promise((resolve) => setTimeout(resolve, 500));
+          await add_to_cart(gift_wrap, 1, "add_to_cart");
+          const note = `Send to ${name} From ${from} & The message is ${message}`;
+          await new Promise((resolve) => setTimeout(resolve, 1000));
           add_note(note);
+          //$("input,textarea").val("");
         }
       });
     }

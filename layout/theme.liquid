@@ -9,7 +9,7 @@
     <link rel="preconnect" href="https://cdn.shopify.com" crossorigin>
     <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
     <link rel="stylesheet" href="{{ 'custom.css' | asset_url }}">
-    {{ 'application.css' | asset_url | stylesheet_tag }}
+    <link rel="stylesheet" href="{{ 'theme.css' | asset_url }}">
     <title>
       {{ page_title }}
       {%- if current_tags %} &ndash; tagged "{{ current_tags | join: ', ' }}"{% endif -%}
