@@ -48,7 +48,7 @@
     $(".gift-wrap-form input, .gift-wrap-form textarea").on("input", function() {
       const allFilled = $(".gift-wrap-form input, .gift-wrap-form textarea").toArray().every(function(element) {
         return $(element).val().trim().length > 0;
-      });
+      }); 
       $(".add-to-cart").prop("disabled", !allFilled);
     });
   });
